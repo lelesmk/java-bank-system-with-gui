@@ -8,13 +8,23 @@
  *
  * @author LelethuMkefa
  */
+
+
 public class Account extends javax.swing.JFrame {
+    
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     /**
      * Creates new form Account
      */
     public Account() {
+        super("Create Account");
         initComponents();
+        
+        // Connect to database
+        conn = JavaConnect.ConnectDb();
     }
 
     /**
