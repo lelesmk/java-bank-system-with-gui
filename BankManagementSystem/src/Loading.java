@@ -8,13 +8,25 @@
  *
  * @author LelethuMkefa
  */
+
+import java.sql.*;
+
 public class Loading extends javax.swing.JFrame {
+    
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     /**
      * Creates new form Loading
      */
     public Loading() {
+        super("Loading");
         initComponents();
+        
+        // Connect to database
+        conn = JavaConnect.ConnectDb();
+        
     }
 
     /**
@@ -120,7 +132,8 @@ public class Loading extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(377, 592));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

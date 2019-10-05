@@ -8,13 +8,25 @@
  *
  * @author LelethuMkefa
  */
+
+import java.sql.*;
+
 public class MyPage extends javax.swing.JFrame {
 
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
+    
     /**
      * Creates new form MyPage
      */
     public MyPage() {
+        
+        super("Home");
         initComponents();
+        
+        // Connect to database
+        conn = JavaConnect.ConnectDb();
     }
 
     /**
@@ -39,7 +51,8 @@ public class MyPage extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(400, 322));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -11,6 +11,8 @@ import javax.swing.UIManager;
  *
  * @author LelethuMkefa
  */
+import java.sql.*;
+
 public class Authentication extends javax.swing.JFrame {
     
     Connection conn;
