@@ -12,6 +12,7 @@ import javax.swing.UIManager;
  * @author LelethuMkefa
  */
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Authentication extends javax.swing.JFrame {
     
@@ -59,6 +60,11 @@ public class Authentication extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +184,41 @@ public class Authentication extends javax.swing.JFrame {
         Account account = new Account();
         account.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from Account where Acc=? and Pin=?";
+        try{
+            
+            // Get username and password from form fields
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jTextField2.getText());
+            rs = pst.executeQuery();
+            
+            // If username and password are correct load MyPage
+            if( rs.next() ){
+                setVisible(false);
+                Loading load = new Loading();
+                load.setVisible(true);
+                rs.close();
+                pst.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Credentials");
+            }
+            
+        } catch ( Exception e ){
+            JOptionPane.showMessageDialog(null, e);
+            
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+                
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
