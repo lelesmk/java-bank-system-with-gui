@@ -12,6 +12,7 @@
 import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 
 public class MyPage extends javax.swing.JFrame {
 
@@ -113,6 +114,11 @@ public class MyPage extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButton1.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/view-icon.png")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -135,14 +141,19 @@ public class MyPage extends javax.swing.JFrame {
         jLabel8.setText("Address");
 
         jTextField3.setEditable(false);
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField4.setEditable(false);
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField5.setEditable(false);
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField6.setEditable(false);
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField7.setEditable(false);
+        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Account No.");
@@ -160,14 +171,19 @@ public class MyPage extends javax.swing.JFrame {
         jLabel13.setText("Security Question");
 
         jTextField8.setEditable(false);
+        jTextField8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField9.setEditable(false);
+        jTextField9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField10.setEditable(false);
+        jTextField10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField11.setEditable(false);
+        jTextField11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField12.setEditable(false);
+        jTextField12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/edit-icon.png")); // NOI18N
@@ -275,7 +291,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Deposit", jPanel2);
@@ -288,7 +304,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Transfer", jPanel3);
@@ -301,7 +317,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Withdrawal", jPanel4);
@@ -314,7 +330,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Customer List", jPanel5);
@@ -327,7 +343,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Transaction", jPanel6);
@@ -340,7 +356,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("View Balance", jPanel7);
@@ -353,7 +369,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Change Pin", jPanel8);
@@ -366,7 +382,7 @@ public class MyPage extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("About", jPanel9);
@@ -413,7 +429,7 @@ public class MyPage extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -434,6 +450,57 @@ public class MyPage extends javax.swing.JFrame {
         jTextField11.setEditable(true);
         jTextField12.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        // Fetch Profile
+        String sql = "select * from Account where Name=?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            rs = pst.executeQuery();
+            
+            if ( rs.next() ) {
+                String add1 = rs.getString("Acc");
+                jTextField8.setText(add1);
+                String add2 = rs.getString("Name");
+                jTextField3.setText(add2);
+                String add3 = rs.getString("DOB");
+                jTextField4.setText(add3);
+                String add4 = rs.getString("Acc_Type");
+                jTextField9.setText(add4);
+                String add5 = rs.getString("Nationality");
+                jTextField5.setText(add5);
+                String add6 = rs.getString("Caste");
+                jTextField10.setText(add6);
+                String add7 = rs.getString("Gender");
+                jTextField6.setText(add7);
+                String add8 = rs.getString("Mobile");
+                jTextField11.setText(add8);
+                String add9 = rs.getString("Address");
+                jTextField7.setText(add9);
+                String add10 = rs.getString("Sec_Q");
+                jTextField12.setText(add10);
+                
+                rs.close();
+                pst.close();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter correct name.");
+            }
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+                
+            } catch ( Exception e ) {
+                
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
