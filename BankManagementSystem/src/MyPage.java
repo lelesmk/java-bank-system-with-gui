@@ -197,6 +197,11 @@ public class MyPage extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/save-icon.png")); // NOI18N
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -501,6 +506,29 @@ public class MyPage extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        // Modify Profile data
+        try {
+            String value1 = jTextField5.getText();
+            String value2 = jTextField6.getText();
+            String value3 = jTextField7.getText();
+            String value4 = jTextField10.getText();
+            String value5 = jTextField11.getText();
+            String value6 = jTextField12.getText();
+            String value7 = jTextField1.getText();
+        
+            String sql = "update Account set Nationality='"+value1+"',Gender='"+value2+"',Address='"+value3+"',Caste='"+value4+"',Mobile='"+value5+"',Sec_Q='"+value6+"' where Name='"+value7+"'";
+            pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Profile update.");
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
