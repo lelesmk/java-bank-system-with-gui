@@ -29,6 +29,9 @@ public class MyPage extends javax.swing.JFrame {
         
         // Connect to database
         conn = JavaConnect.ConnectDb();
+        
+        // Call date
+        Calendar();
     }
     
     // auto generate date
