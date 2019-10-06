@@ -200,6 +200,7 @@ public class Authentication extends javax.swing.JFrame {
             if( rs.next() ){
                 setVisible(false);
                 Loading load = new Loading();
+                load.setUpLoading();
                 load.setVisible(true);
                 rs.close();
                 pst.close();

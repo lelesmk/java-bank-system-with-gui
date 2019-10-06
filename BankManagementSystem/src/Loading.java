@@ -10,12 +10,16 @@
  */
 
 import java.sql.*;
+import javax.swing.*;
 
-public class Loading extends javax.swing.JFrame {
+
+public class Loading extends javax.swing.JFrame implements Runnable {
     
     Connection conn;
     ResultSet rs;
     PreparedStatement pst;
+    int secs = 0;
+    Thread thread;
 
     /**
      * Creates new form Loading
@@ -25,10 +29,40 @@ public class Loading extends javax.swing.JFrame {
         initComponents();
         
         // Connect to database
-        conn = JavaConnect.ConnectDb();
-        
+        thread = new Thread((Runnable)this);
     }
-
+    
+    public void setUpLoading() {
+        
+        setVisible(false);
+        thread.start();
+    }
+    
+    public void run() {
+        
+        try {
+            
+            for( int i = 0; i <= 200; i++ ) {
+                secs = secs+1;
+                int m = jProgressBar1.getMaximum();
+                int v = jProgressBar1.getValue();
+                
+                if( v < m ){
+                    jProgressBar1.setValue(jProgressBar1.getValue() + 1);
+                } else {
+                    i = 201;
+                    setVisible(false);
+                    MyPage home = new MyPage();
+                    home.setVisible(true);
+                }
+                Thread.sleep(50);
+            }
+            
+        } catch ( Exception e ) {
+            
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,4 +215,5 @@ public class Loading extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
+
 }
