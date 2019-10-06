@@ -130,6 +130,7 @@ public class Account extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         jRadioButton1.setText("Male");
 
@@ -140,6 +141,7 @@ public class Account extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         jRadioButton2.setText("Female");
 
@@ -446,7 +448,7 @@ public class Account extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String sql = "insert into Account(Acc,Name,DOB,Pin,Acc_Type,Nationality,Caste,MICR_No,Gender,Mobile,Address,Sec.Q,Sec.A,Balance) "
+        String sql = "insert into Account(Acc,Name,DOB,Pin,Acc_Type,Nationality,Caste,MICR_No,Gender,Mobile,Address,Sec_Q,Sec_A,Balance) "
                 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         try{
