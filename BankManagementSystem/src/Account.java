@@ -407,7 +407,8 @@ public class Account extends javax.swing.JFrame {
     //
     
     public void Balances() {
-        String sql = "insert into Balances(Name,Acc,MICR_NO.,Balance) values(?,?,?,?)";
+        String sql = "insert into Balances(Name,Acc,MICR_No,Balance) values(?,?,?,?)";
+        
         try{
             pst = conn.prepareStatement(sql);
             pst.setString(1, jTextField7.getText());
