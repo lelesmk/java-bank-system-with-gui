@@ -98,6 +98,7 @@ public class MyPage extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jTextField18 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -318,6 +319,7 @@ public class MyPage extends javax.swing.JFrame {
 
         jTextField13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        jTextField14.setEditable(false);
         jTextField14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,6 +327,7 @@ public class MyPage extends javax.swing.JFrame {
             }
         });
 
+        jTextField15.setEditable(false);
         jTextField15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,6 +335,7 @@ public class MyPage extends javax.swing.JFrame {
             }
         });
 
+        jTextField16.setEditable(false);
         jTextField16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jTextField17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -347,6 +351,9 @@ public class MyPage extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/ok-icon.png")); // NOI18N
         jButton6.setText("Deposit");
+
+        jTextField18.setEditable(false);
+        jTextField18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -374,10 +381,15 @@ public class MyPage extends javax.swing.JFrame {
                                     .addComponent(jLabel17)
                                     .addComponent(jLabel18))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField17, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                    .addComponent(jTextField16))
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jTextField17)
+                                        .addGap(106, 106, 106))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, Short.MAX_VALUE)))
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(274, 274, 274)
@@ -408,7 +420,8 @@ public class MyPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -553,7 +566,7 @@ public class MyPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(660, 467));
+        setSize(new java.awt.Dimension(660, 497));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -732,6 +745,7 @@ public class MyPage extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
