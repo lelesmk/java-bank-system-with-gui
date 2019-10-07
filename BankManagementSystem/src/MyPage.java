@@ -345,14 +345,29 @@ public class MyPage extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/search-icon.png")); // NOI18N
         jButton4.setText("Search");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/ok-icon.png")); // NOI18N
         jButton5.setText("Total");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/ok-icon.png")); // NOI18N
         jButton6.setText("Deposit");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTextField18.setEditable(false);
         jTextField18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -667,6 +682,87 @@ public class MyPage extends javax.swing.JFrame {
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField15ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        // Search button
+        String sql = "select * from Balances where Name=?";
+        
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, jTextField13.getText());
+            rs = pst.executeQuery();
+            
+            if ( rs.next() ) {
+                String add1 = rs.getString("Name");
+                jTextField14.setText(add1);
+                String add2 = rs.getString("Acc");
+                jTextField15.setText(add2);
+                String add3 = rs.getString("Balance");
+                jTextField16.setText(add3);
+                rs.close();
+                pst.close();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter correct name.");
+            }
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+                
+            } catch ( Exception e ) {
+                
+            }
+        }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        // Total button
+        try {
+            String amount1 = jTextField16.getText();
+            String amount2 = jTextField17.getText();
+            int sum = Integer.parseInt(amount1) + Integer.parseInt(amount2);
+            String sum1 = String.valueOf(sum);
+            jTextField18.setText(sum1);
+            
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        // Deposit button
+        try {
+            String value1 = jTextField13.getText();
+            String value2 = jTextField18.getText();
+            String sql = "update Balances set Balance='"+value2+"' where Name='"+value1+"'";
+            
+            pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Successfully deposited.");
+            
+            // Reset fields after deposit
+            jTextField13.setText("");
+            jTextField14.setText("");
+            jTextField15.setText("");
+            jTextField16.setText("");
+            jTextField17.setText("");
+            jTextField18.setText("");
+            
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
