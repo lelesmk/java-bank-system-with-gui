@@ -33,6 +33,9 @@ public class MyPage extends javax.swing.JFrame {
         
         // Call date
         Calendar();
+        
+        // Fetch list of accounts
+        ToAccount();
     }
     
     // auto generate date
@@ -532,7 +535,21 @@ public class MyPage extends javax.swing.JFrame {
         jTextField27.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select" }));
+        jComboBox1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox1PopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/search-icon.png")); // NOI18N
@@ -554,6 +571,11 @@ public class MyPage extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon("/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/images/ok-icon.png")); // NOI18N
         jButton9.setText("Transfer");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -992,42 +1014,120 @@ public class MyPage extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    public void BalanceDb(){
-        // Remaining balance
-        try {
-            String amount1 = jTextField22.getText();
-            String amount2 = jTextField23.getText();
-            int diff = Integer.parseInt(amount1) - Integer.parseInt(amount2);
-            String diff1 = String.valueOf(diff);
-            jTextField24.setText(diff1);
-            
-        } catch ( Exception e ) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    public void BalanceCr(){
-        // Remaining balance
-        try {
-            String amount1 = jTextField25.getText();
-            String amount2 = jTextField26.getText();
-            int diff = Integer.parseInt(amount1) + Integer.parseInt(amount2);
-            String diff1 = String.valueOf(diff);
-            jTextField27.setText(diff1);
-            
-        } catch ( Exception e ) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+   
     
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        // Show button
         
-        BalanceDb();
-        BalanceCr();
+        // Remaining balance of From Account
+        try {
+            String amount1 = jTextField22.getText();
+            String amount2 = jTextField23.getText(); // deposit amount
+            int diff = Integer.parseInt(amount1) - Integer.parseInt(amount2);
+            String diff1 = String.valueOf(diff);
+            jTextField24.setText(diff1); // remaining balance
+            jTextField26.setText(amount2); // credit amount
+            
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        // New balance of To Account
+        try {
+            String amount1 = jTextField26.getText(); // credit amount
+            String amount2 = jTextField25.getText(); // current balance
+            int sum = Integer.parseInt(amount1) + Integer.parseInt(amount2);
+            String sum1 = String.valueOf(sum);
+            jTextField27.setText(sum1); // new balance
+            
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
         
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    public void ToAccount() {
+        try {
+            String sql = "select * from Balances";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while ( rs.next() ) {
+                String account = rs.getString("Acc");
+                jComboBox1.addItem(account);
+            }
+            
+        } catch ( Exception e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        // ComboBox dop menu of Accounts
+        
+        // Current Balance of To Account
+        try {
+            String a1 = (String) jComboBox1.getSelectedItem();
+            String sql = "select * from Balances where Acc=?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, a1);
+            rs = pst.executeQuery();
+            
+            if ( rs.next() ) {
+                String add = rs.getString("Balance");
+                jTextField25.setText(add); // current balance
+            }
+            
+        } catch ( Exception e ) { 
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeInvisible
+
+    public void TransferCr() {
+        
+        
+        try {
+            String value1 = (String) jComboBox1.getSelectedItem();// to account
+            String value2 = jTextField27.getText(); // new balance
+            String sql = "update Balances set Balance='"+value2+"' where Acc='"+value1+"'";
+            pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Successfully transfered.");
+            
+        } catch ( Exception e ) { 
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    public void TransferDr() {
+        try {
+            String value1 = jTextField19.getText(); // from account
+            String value2 = jTextField24.getText(); // remaining balance
+            String sql = "update Balances set Balance='"+value2+"' where Name='"+value1+"'";
+            pst = conn.prepareStatement(sql);
+            pst.execute();            
+        } catch ( Exception e ) { 
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        
+        // Transfer
+        TransferDr();
+        TransferCr();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
