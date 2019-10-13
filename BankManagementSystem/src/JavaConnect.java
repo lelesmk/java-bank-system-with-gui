@@ -21,7 +21,7 @@ public class JavaConnect {
         
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/LelethuMkefa/dev/practice-projects/java-practice/BankManagementSystem/bank.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//LelethuMkefa//dev//practice-projects//java-practice//BankManagementSystem//bank.db");
             return conn;
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
