@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BankManagementSystem/src"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/BankManagementSystem.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/lib/DateChooser.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/lib/JTattoo-1.6.12.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/lib/rs2xml.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/dist/lib/sqlite-jdbc-3.27.2.1.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/lib/rs2xml.jar"/>
+	<classpathentry kind="lib" path="BankManagementSystem/lib/sqlite-jdbc-3.27.2.1.jar"/>
+	<classpathentry kind="output" path="BankManagementSystem/build/classes"/>
+</classpath>
